@@ -5,7 +5,7 @@ The target machine is an Intel NUC with 32GB RAM and 2 x 256GB SSD disks.
 Plan:
 
 * [x] Get contact to VSphere through Terraform.
-* [ ] Create a virtual disk.
+* [x] Create a virtual disk.
 * [ ] Create a virtual machine with the disk attached.
 * [ ] Create a cluster that Docker Swarm can run on.
 * [ ] Create a Gluster host for persistent storage.
@@ -19,5 +19,10 @@ Create a file `terraform/secret.tf` like
     variable "vsphere-password" { default = "my-esxi-root-password" }
 
 ## Usage
+
+    $ cd terraform
+    $ terraform plan
+    $ terraform apply
+
 
 
