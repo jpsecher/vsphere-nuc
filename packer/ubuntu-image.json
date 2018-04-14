@@ -14,6 +14,7 @@
       "remote_host": "esxi",
       "remote_username": "root",
       "ssh_username": "root",
+      "disable_vnc": true,
       "remote_private_key_file": "/Users/jps/.ssh/esxi-lundogbendsen_rsa",
       "shutdown_command": "shutdown -P now"
     }
