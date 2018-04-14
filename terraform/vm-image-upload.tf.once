@@ -1,0 +1,11 @@
+# This upload need only be done once.
+# The SHA256 hashes are as follows:
+# 8ab372e4413e3ddabd8fa4e91754f40c44b81c5a1260f6ed7356029d1f09a988  Ubuntu-Server_16.04.4-VM-64bit.7z
+# edc50083aa0d74271f605e7a29bfaabb8d22b38840396605b95b043b262e0d86  ubuntu-server-16.04.4-64bit.vmdk
+
+resource "vsphere_file" "ubuntu-server-disk-upload" {
+  datacenter = "${data.vsphere_datacenter.dc.id}"
+  datastore = "${var.vsphere-datastore-1}"
+  source_file = "/Users/jps/Downloads/ubuntu-server-16.04.4-64bit.vmdk"
+  destination_file = "${var.ubuntu-disk-image}"
+}
