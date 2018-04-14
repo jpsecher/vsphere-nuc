@@ -9,13 +9,32 @@
       "iso_checksum":
         "0a03608988cfd2e50567990dc8be96fb3c501e198e2e6efcb846d89efc7b89f2",
       "iso_checksum_type": "sha256",
+      "guest_os_type": "ubuntu-64",
       "communicator": "ssh",
       "remote_type": "esx5",
       "remote_host": "esxi",
       "remote_username": "root",
       "ssh_username": "root",
-      "disable_vnc": true,
+      "vnc_port_min": "5900",
+      "vnc_port_max": "5911",
+      "vnc_bind_address": "0.0.0.0",
+      "vnc_disable_password": true,
       "remote_private_key_file": "/Users/jps/.ssh/esxi-lundogbendsen_rsa",
+      "boot_command": [
+        "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "/install/vmlinuz noapic ",
+        "preseed/file=/floppy/ubuntu.cfg ",
+        "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+        "hostname={{ .Name }} ",
+        "fb=false debconf/frontend=noninteractive ",
+        "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
+        "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+        "grub-installer/bootdev=/dev/sda ",
+        "initrd=/install/initrd.gz -- <enter>"
+      ],
       "shutdown_command": "shutdown -P now"
     }
   ],

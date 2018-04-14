@@ -15,3 +15,7 @@ To avoid the username/password access, run
     /usr/lib/vmware/openssh/bin/ssh-keygen
 
 and generate an SSH key.
+
+## Trouble shooting
+
+See https://groups.google.com/forum/#!topic/packer-tool/ZPuTeTagtqU, https://nickcharlton.net/posts/using-packer-esxi-6.html
