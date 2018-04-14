@@ -1,0 +1,24 @@
+{
+  "description": "Ubuntu Server base image",
+  "variables": {},
+  "builders": [
+    {
+      "type": "vmware-iso",
+      "iso_url":
+        "http://releases.ubuntu.com/16.04.4/ubuntu-16.04.4-server-amd64.iso",
+      "iso_checksum":
+        "0a03608988cfd2e50567990dc8be96fb3c501e198e2e6efcb846d89efc7b89f2",
+      "iso_checksum_type": "sha256",
+      "communicator": "ssh",
+      "remote_type": "esx5",
+      "remote_host": "esxi",
+      "remote_username": "root",
+      "ssh_username": "root",
+      "remote_private_key_file": "/Users/jps/.ssh/esxi-lundogbendsen_rsa",
+      "shutdown_command": "shutdown -P now"
+    }
+  ],
+  "min_packer_version": "1.2.2",
+  "provisioners": [],
+  "post-processors": []
+}

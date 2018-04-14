@@ -1,3 +1,8 @@
+data "vsphere_virtual_machine" "ubuntu-server" {
+  name          = "${var.ubuntu-disk-image}"
+  datacenter_id = "${data.vsphere_datacenter.dc.id}"
+}
+
 resource "vsphere_virtual_machine" "swarm-host-1" {
   name = "swarm-host-1"
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
@@ -22,5 +27,8 @@ resource "vsphere_virtual_machine" "swarm-host-1" {
   # }
   network_interface {
     network_id   = "${data.vsphere_network.network-default.id}"
+  }
+  clone {
+    ${var.ubuntu-disk-image}
   }
 }

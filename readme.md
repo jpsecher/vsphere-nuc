@@ -6,11 +6,11 @@ Plan:
 
 * [x] Get contact to VSphere through Terraform.
 * [x] Create a virtual disk.
+* [ ] Create and deploy a new image with Packer.
 * [ ] Create a virtual machine with the disk attached.
 * [ ] Create a cluster that Docker Swarm can run on.
 * [ ] Create a Gluster host for persistent storage.
 * [ ] Get Docker GetStarted example to run on Gluster-backed storage.
-* [ ] Create and deploy a new image with Packer.
 
 ## Initial setup
 

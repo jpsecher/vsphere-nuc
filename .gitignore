@@ -1,3 +1,4 @@
 terraform/.terraform
 terraform/secret.tf
 terraform/terraform.tfstate*
+packer/packer_cache

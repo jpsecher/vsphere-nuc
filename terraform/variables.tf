@@ -11,5 +11,5 @@ variable "vsphere-user" {
   default = "root"
 }
 variable "ubuntu-disk-image" {
-  default = "/images/ubuntu-server-16.04.4-64bit.vmdk"
+  default = "/images/ubuntu-16.04-server-cloudimg-amd64.ova"
 }
