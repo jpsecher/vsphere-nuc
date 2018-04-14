@@ -21,6 +21,10 @@ data "vsphere_host" "host" {
 data "vsphere_resource_pool" "pool" {
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
+data "vsphere_network" "network-default" {
+  name = "VM Network"
+  datacenter_id = "${data.vsphere_datacenter.dc.id}"
+}
 
 output "datacenter" {
   value = "${data.vsphere_datacenter.dc.id}"
@@ -36,4 +40,7 @@ output "host" {
 }
 output "pool" {
   value = "${data.vsphere_resource_pool.pool.id}"
+}
+output "network-default" {
+  value = "${data.vsphere_network.network-default.id}"
 }
