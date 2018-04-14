@@ -15,6 +15,12 @@ data "vsphere_datastore" "ds2" {
   name = "${var.vsphere-datastore-2}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
+data "vsphere_host" "host" {
+  datacenter_id = "${data.vsphere_datacenter.dc.id}"
+}
+data "vsphere_resource_pool" "pool" {
+  datacenter_id = "${data.vsphere_datacenter.dc.id}"
+}
 
 output "datacenter" {
   value = "${data.vsphere_datacenter.dc.id}"
@@ -24,4 +30,10 @@ output "datastore-1" {
 }
 output "datastore-2" {
   value = "${data.vsphere_datastore.ds2.id}"
+}
+output "host" {
+  value = "${data.vsphere_host.host.id}"
+}
+output "pool" {
+  value = "${data.vsphere_resource_pool.pool.id}"
 }
