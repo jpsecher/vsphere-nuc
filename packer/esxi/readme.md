@@ -37,9 +37,12 @@ See https://github.com/nickcharlton/packer-esxi/blob/master/ubuntu-1604-base.jso
 
 ## Generate SSH key on ESXi host.
 
+Don't know why you would need this, but here it is:
+
     /usr/lib/vmware/openssh/bin/ssh-keygen
 
 ## Trouble shooting
 
 See https://groups.google.com/forum/#!topic/packer-tool/ZPuTeTagtqU, https://nickcharlton.net/posts/using-packer-esxi-6.html
 
+Generating OVA: https://github.com/hashicorp/packer/issues/4832

@@ -1,5 +1,6 @@
 {
   "description": "Ubuntu Server base image",
+  "min_packer_version": "1.2.2",
   "variables": {
     "private_ssh_key_file": "/Users/jps/.ssh/esxi-lundogbendsen_rsa",
     "esxi_host": "esxi",
@@ -10,8 +11,8 @@
   "builders": [
     {
       "type": "vmware-iso",
-      "name": "ubuntu-1604-server-base",
-      "vm_name": "ubuntu-1604-server-base",
+      "name": "ubuntu-1604-server-base-v3",
+      "vm_name": "ubuntu-1604-server-base-v3",
       "guest_os_type": "ubuntu-64",
       "tools_upload_flavor": "linux",
       "disk_type_id": "thin",
@@ -59,11 +60,23 @@
         "initrd=/install/initrd.gz -- <enter>"
       ],
       "shutdown_command":
-        "echo 'shutdown -P now' > shutdown.sh; echo 'ubuntu'|sudo -S sh 'shutdown.sh'",
+        "echo 'shutdown -P now' > shutdown.sh; echo 'ubuntu' | sudo -S sh 'shutdown.sh'",
       "skip_compaction": false
     }
   ],
-  "min_packer_version": "1.2.2",
-  "provisioners": [],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command":
+        "{{ .Vars }} echo 'ubuntu' | sudo -ES bash '{{.Path}}'",
+      "scripts": [
+        "base.sh",
+        "vmware.sh",
+        "custom.sh",
+        "cleanup.sh",
+        "zerodisk.sh"
+      ]
+    }
+  ],
   "post-processors": []
 }
