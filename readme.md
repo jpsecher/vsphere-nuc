@@ -16,7 +16,7 @@ Plan:
 
 Get the SSH key `esxi-lundogbendsen_rsa` an put it in your `~/.ssh`.
 
-Create a `packer/esxi/variables.json` and insert the SSH key path:
+Create a `packer/ubuntu/variables.json` and insert the SSH key path:
 
     {
       "private_ssh_key_file": "/Users/jps/.ssh/esxi-lundogbendsen_rsa",
@@ -37,28 +37,22 @@ Create a `packer/terraform/secrets.tf` with
 
 Build an image
 
-```
-    $ cd packer/esxi
+    $ cd packer/ubuntu
     $ packer build -var-file=variables.json ubuntu-1604-server-base.json
-```
 
 Validate your packer file
 
-```
-    $ cd packer/esxi
+    $ cd packer/ubuntu
     $ packer validate -var-file=variables.json  ubuntu-1604-server-base.json
-```
 
 In my setup /etc/hosts has a line esxi X.Y.Z.X with the IP my test box has on the network.
 
-Create a `packer/esxi/secrets.json` and insert user,pass for the vcenter.fibernetcpe
+Create a `packer/ubuntu/secrets.json` and insert user,pass for the vcenter.fibernetcpe
 
-```
-{
-  "username": "root",
-  "password": "PASSWORD",
-}
-```
+    {
+      "username": "root",
+      "password": "PASSWORD",
+    }
 
 ### Todo
 
