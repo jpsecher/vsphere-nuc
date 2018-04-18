@@ -30,12 +30,14 @@ Create a `packer/esxi/variables.json` and insert the SSH key path:
 ## Packer
 
 Build an image
+
 ```
     $ cd packer/esxi
     $ packer build -var-file=variables.json ubuntu-1604-server-base.json
 ```
 
 Validate your packer file
+
 ```
     $ cd packer/esxi
     $ packer validate -var-file=variables.json  ubuntu-1604-server-base.json
@@ -44,12 +46,17 @@ Validate your packer file
 In my setup /etc/hosts has a line esxi X.Y.Z.X with the IP my test box has on the network.
 
 Create a `packer/esxi/secrets.json` and insert user,pass for the vcenter.fibernetcpe
+
 ```
 {
   "username": "root",
   "password": "PASSWORD",
 }
 ```
+
+### Todo
+
+* Compatibility mode of VM?
 
 ## Terraform
 

@@ -1,15 +1,9 @@
 variable "vsphere-server" {
-  default = "esxi"
+  default = "vcenter.fibernetcpe"
 }
 variable "vsphere-datastore-1" {
   default = "datastore1"
 }
-variable "vsphere-datastore-2" {
-  default = "datastore2"
-}
 variable "vsphere-user" {
-  default = "root"
+  default = "administrator@vsphere.local"
 }
-#variable "ubuntu-disk-image" {
-#  default = "/images/ubuntu-16.04-server-cloudimg-amd64.ova"
-#}

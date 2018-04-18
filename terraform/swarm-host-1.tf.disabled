@@ -1,5 +1,5 @@
 data "vsphere_virtual_machine" "base" {
-  name = "ubuntu-1604-server-base-v4"
+  name = "ubuntu-1604-server-base-v8"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
