@@ -10,10 +10,10 @@ data "vsphere_datacenter" "dc" {
   name = "datacenter1"
 }
 data "vsphere_resource_pool" "pool" {
-  name          = "192.168.1.22/Resources"
+  # Default pool is named $host/Resources.
+  name = "192.168.1.22/Resources"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
-
 data "vsphere_datastore" "ds1" {
   name = "${var.vsphere-datastore-1}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
