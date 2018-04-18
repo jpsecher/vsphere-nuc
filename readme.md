@@ -62,3 +62,4 @@ Create a `packer/esxi/secrets.json` and insert user,pass for the vcenter.fiberne
 * terraform, version unknown
 * requires Packer version 1.2.2 or higher;
 * a secret to access VMWare
+* ovftool (I downloaded it from VMWare. needed a login)
