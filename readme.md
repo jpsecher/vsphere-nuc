@@ -29,8 +29,17 @@ Create a `packer/esxi/variables.json` and insert the SSH key path:
 
 ## Packer
 
+Build an image
+```
     $ cd packer/esxi
     $ packer build -var-file=variables.json ubuntu-1604-server-base.json
+```
+
+Validate your packer file
+```
+    $ cd packer/esxi
+    $ packer validate -var-file=variables.json  ubuntu-1604-server-base.json
+```
 
 ## Terraform
 
