@@ -68,6 +68,18 @@
   ],
   "post-processors": [
     {
+      "type": "vsphere",
+      "cluster": "cluster",
+      "insecure": true,
+      "datacenter": "datacenter1",
+      "datastore": "{{user `esxi_datastore`}}",
+      "host": "vcenter.fibernetcpe",
+      "username": "{{user `username`}}",
+      "password": "{{user `password`}}",
+      "vm_folder": "/templates",
+      "vm_name": "ubuntu-v23"
+    },
+    {
       "type": "vsphere-template",
       "host": "vcenter.fibernetcpe",
       "insecure": true,
