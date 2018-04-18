@@ -41,5 +41,5 @@ Create a `packer/esxi/variables.json` and insert the SSH key path:
 # What do I need to run this
 
 * terraform, version unknown
-* packer
+* requires Packer version 1.2.2 or higher;
 * a secret to access VMWare
