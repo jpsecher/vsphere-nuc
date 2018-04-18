@@ -114,3 +114,5 @@ gradle-app.setting
 terraform/.terraform
 terraform/secret.tf
 terraform/terraform.tfstate*
+/terraform/secrets.tf
+/packer/esxi/secrets.json

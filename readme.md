@@ -41,6 +41,16 @@ Validate your packer file
     $ packer validate -var-file=variables.json  ubuntu-1604-server-base.json
 ```
 
+In my setup /etc/hosts has a line esxi X.Y.Z.X with the IP my test box has on the network.
+
+Create a `packer/esxi/secrets.json` and insert user,pass for the vcenter.fibernetcpe
+```
+{
+  "username": "root",
+  "password": "PASSWORD",
+}
+```
+
 ## Terraform
 
     $ cd terraform

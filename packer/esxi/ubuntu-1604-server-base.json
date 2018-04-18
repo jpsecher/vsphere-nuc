@@ -66,5 +66,15 @@
       "scripts": ["base.sh", "vmware.sh", "custom.sh", "cleanup.sh"]
     }
   ],
-  "post-processors": []
+  "post-processors": [
+    {
+      "type": "vsphere-template",
+      "host": "vcenter.fibernetcpe",
+      "insecure": true,
+      "username": "{{user `username`}}",
+      "password": "{{user `password`}}",
+      "datacenter": "datacenter1",
+      "folder": "/templates"
+    }
+  ]
 }
