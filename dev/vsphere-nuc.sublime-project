@@ -1,11 +1,11 @@
 { "folders":
-	[ { "path": ".."
+  [ { "path": ".."
     , "folder_exclude_patterns":
-      [
+      [ "packer_cache"
       ]
     , "file_exclude_patterns":
       [ "terraform.tfstate*"
       ]
-		}
-	]
+    }
+  ]
 }

@@ -1,5 +1,5 @@
-data "vsphere_virtual_machine" "ubuntu-server" {
-  name          = "${var.ubuntu-disk-image}"
+data "vsphere_virtual_machine" "base" {
+  name = "ubuntu-1604-server-base-v4"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
@@ -16,7 +16,7 @@ resource "vsphere_virtual_machine" "swarm-host-1" {
   #run_tools_scripts_before_guest_standby = false
   disk {
     label = "disk0"
-    size = 8
+    size = 40
     disk_mode = "nonpersistent"
   }
   # disk {
@@ -29,6 +29,6 @@ resource "vsphere_virtual_machine" "swarm-host-1" {
     network_id   = "${data.vsphere_network.network-default.id}"
   }
   clone {
-    ${var.ubuntu-disk-image}
+    template_uuid = "${data.vsphere_virtual_machine.base.id}"
   }
 }

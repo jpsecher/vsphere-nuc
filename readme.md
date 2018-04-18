@@ -14,15 +14,26 @@ Plan:
 
 ## Initial setup
 
-Create a file `terraform/secret.tf` like
+Get the SSH key `esxi-lundogbendsen_rsa` an put it in your `~/.ssh`.
 
-    variable "vsphere-password" { default = "my-esxi-root-password" }
+Create a `packer/esxi/variables.json` and insert the SSH key path:
 
-## Usage
+    {
+      "private_ssh_key_file": "/Users/jps/.ssh/esxi-lundogbendsen_rsa",
+      "esxi_host": "192.168.1.22",
+      "esxi_network": "VM Network",
+      "esxi_datastore": "datastore1",
+      "esxi_user": "root",
+      "version": "v5"
+    }
+
+## Packer
+
+    $ cd packer/esxi
+    $ packer build -var-file=variables.json ubuntu-1604-server-base.json
+
+## Terraform
 
     $ cd terraform
     $ terraform plan
     $ terraform apply
-
-
-

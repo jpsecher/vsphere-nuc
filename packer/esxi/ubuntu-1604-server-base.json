@@ -1,20 +1,14 @@
 {
   "description": "Ubuntu Server base image",
   "min_packer_version": "1.2.2",
-  "variables": {
-    "private_ssh_key_file": "/Users/jps/.ssh/esxi-lundogbendsen_rsa",
-    "esxi_host": "esxi",
-    "esxi_network": "VM Network",
-    "esxi_datastore": "datastore1",
-    "esxi_user": "root"
-  },
   "builders": [
     {
       "type": "vmware-iso",
-      "name": "ubuntu-1604-server-base-v3",
-      "vm_name": "ubuntu-1604-server-base-v3",
+      "name": "ubuntu-1604-server-base-{{user `version`}}",
+      "vm_name": "ubuntu-1604-server-base-{{user `version`}}",
       "guest_os_type": "ubuntu-64",
       "tools_upload_flavor": "linux",
+      "disk_size": 20480,
       "disk_type_id": "thin",
 
       "iso_url":
@@ -32,7 +26,6 @@
       "remote_datastore": "{{user `esxi_datastore`}}",
       "remote_username": "{{user `esxi_user`}}",
       "remote_private_key_file": "{{user `private_ssh_key_file`}}",
-      "keep_registered": true,
 
       "headless": false,
       "boot_wait": "5s",
@@ -61,7 +54,8 @@
       ],
       "shutdown_command":
         "echo 'shutdown -P now' > shutdown.sh; echo 'ubuntu' | sudo -S sh 'shutdown.sh'",
-      "skip_compaction": false
+      "skip_compaction": false,
+      "keep_registered": true
     }
   ],
   "provisioners": [
@@ -69,13 +63,7 @@
       "type": "shell",
       "execute_command":
         "{{ .Vars }} echo 'ubuntu' | sudo -ES bash '{{.Path}}'",
-      "scripts": [
-        "base.sh",
-        "vmware.sh",
-        "custom.sh",
-        "cleanup.sh",
-        "zerodisk.sh"
-      ]
+      "scripts": ["base.sh", "vmware.sh", "custom.sh", "cleanup.sh"]
     }
   ],
   "post-processors": []

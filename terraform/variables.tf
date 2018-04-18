@@ -10,6 +10,6 @@ variable "vsphere-datastore-2" {
 variable "vsphere-user" {
   default = "root"
 }
-variable "ubuntu-disk-image" {
-  default = "/images/ubuntu-16.04-server-cloudimg-amd64.ova"
-}
+#variable "ubuntu-disk-image" {
+#  default = "/images/ubuntu-16.04-server-cloudimg-amd64.ova"
+#}
