@@ -37,3 +37,9 @@ Create a `packer/esxi/variables.json` and insert the SSH key path:
     $ cd terraform
     $ terraform plan
     $ terraform apply
+
+# What do I need to run this
+
+* terraform, version unknown
+* packer
+* a secret to access VMWare
