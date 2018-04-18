@@ -27,6 +27,12 @@ Create a `packer/esxi/variables.json` and insert the SSH key path:
       "version": "v5"
     }
 
+Create a `packer/terraform/secrets.tf` with
+
+    variable "vsphere-password" {
+      default = "Passw0rd-for-administrator"
+    }
+
 ## Packer
 
 Build an image
