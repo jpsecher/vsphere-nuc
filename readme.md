@@ -6,7 +6,7 @@ Plan:
 
 * [x] Get contact to VSphere through Terraform.
 * [x] Create a virtual disk.
-* [ ] Create and deploy a new image with Packer.
+* [x] Create and deploy a new image with Packer.
 * [ ] Create a virtual machine with the disk attached.
 * [ ] Create a cluster that Docker Swarm can run on.
 * [ ] Create a Gluster host for persistent storage.
@@ -14,49 +14,55 @@ Plan:
 
 ## Initial setup
 
-Get the SSH key `esxi-lundogbendsen_rsa` an put it in your `~/.ssh`.
-
-Create a `packer/ubuntu/variables.json` and insert the SSH key path:
+Get the passwords to your ESXi host and your vCenter adminiatration account. Create a `packer/ubuntu/variables.json`:
 
     {
       "private_ssh_key_file": "/Users/jps/.ssh/esxi-lundogbendsen_rsa",
-      "esxi_host": "192.168.1.22",
+      "esxi_host": "esxi.fibernetcpe",
       "esxi_network": "VM Network",
       "esxi_datastore": "datastore1",
       "esxi_user": "root",
-      "version": "v5"
+      "esxi_password": "correct battery horse staple",
+      "vcenter_host": "vcenter.fibernetcpe",
+      "vcenter_datacenter": "datacenter1",
+      "vcenter_cluster": "cluster1",
+      "vcenter_user": "administrator@vsphere.local",
+      "vcenter_password": "correct battery horse staple",
     }
 
-Create a `packer/terraform/secrets.tf` with
+Create a `terraform/secrets.tf` with
 
     variable "vsphere-password" {
-      default = "Passw0rd-for-administrator"
+      default = "correct battery horse staple"
     }
 
+You might need to insert `esxi.fibernetcpe` and `vcenter.fibernetcpe` into your `/etc/hosts` to make the DNS resolution work.
+
+You need the following installed:
+
+* [Terraform](https://terraform.io)
+* [Packer](https://packer.io)
+* [ovftool](https://my.vmware.com/group/vmware/details?downloadGroup=OVFTOOL420&productId=491#) for which you need a free account.
+
+### OVFTool on Mac
+
+SHA256SUM: ab665f0c47ae03d45403e5c03a9c38b473beaab868920806c6f247e0590f89c3
+VMware-ovftool-4.2.0-5965791-mac.x64.dmg
+
+Installed as: /Applications/VMware\ OVF\ Tool/ovftool
+
+    $ ln -s /Applications/VMware\ OVF\ Tool/ovftool ~/bin/
+
 ## Packer
-
-Build an image
-
-    $ cd packer/ubuntu
-    $ packer build -var-file=variables.json ubuntu-1604-server-base.json
 
 Validate your packer file
 
     $ cd packer/ubuntu
     $ packer validate -var-file=variables.json  ubuntu-1604-server-base.json
 
-In my setup /etc/hosts has a line esxi X.Y.Z.X with the IP my test box has on the network.
+Build an image
 
-Create a `packer/ubuntu/secrets.json` and insert user,pass for the vcenter.fibernetcpe
-
-    {
-      "username": "root",
-      "password": "PASSWORD",
-    }
-
-### Todo
-
-* Compatibility mode of VM?
+    $ packer build -var-file=variables.json ubuntu-1604-server-base.json
 
 ## Terraform
 
@@ -64,9 +70,6 @@ Create a `packer/ubuntu/secrets.json` and insert user,pass for the vcenter.fiber
     $ terraform plan
     $ terraform apply
 
-# What do I need to run this
+### Todo
 
-* terraform, version unknown
-* requires Packer version 1.2.2 or higher;
-* a secret to access VMWare
-* ovftool (I downloaded it from VMWare. needed a login)
+* Compatibility mode of VM?

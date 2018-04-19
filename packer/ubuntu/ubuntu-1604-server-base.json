@@ -1,6 +1,9 @@
 {
   "description": "Ubuntu Server base image",
   "min_packer_version": "1.2.1",
+  "variables": {
+    "version": "v27"
+  },
   "builders": [
     {
       "type": "vmware-iso",
@@ -25,8 +28,7 @@
       "remote_host": "{{user `esxi_host`}}",
       "remote_datastore": "{{user `esxi_datastore`}}",
       "remote_username": "{{user `esxi_user`}}",
-      "remote_private_key_file": "{{user `private_ssh_key_file`}}",
-      "format": "vmx",
+      "remote_password": "{{user `esxi_password`}}",
 
       "headless": false,
       "boot_wait": "5s",
@@ -55,7 +57,9 @@
       ],
       "shutdown_command":
         "echo 'shutdown -P now' > shutdown.sh; echo 'ubuntu' | sudo -S sh 'shutdown.sh'",
-      "skip_compaction": false
+      "skip_compaction": false,
+      "format": "vmx",
+      "keep_registered": true
     }
   ],
   "provisioners": [
