@@ -1,6 +1,6 @@
 {
   "description": "Ubuntu Server base image",
-  "min_packer_version": "1.2.2",
+  "min_packer_version": "1.2.1",
   "builders": [
     {
       "type": "vmware-iso",
@@ -26,6 +26,7 @@
       "remote_datastore": "{{user `esxi_datastore`}}",
       "remote_username": "{{user `esxi_user`}}",
       "remote_private_key_file": "{{user `private_ssh_key_file`}}",
+      "format": "vmx",
 
       "headless": false,
       "boot_wait": "5s",
@@ -54,8 +55,7 @@
       ],
       "shutdown_command":
         "echo 'shutdown -P now' > shutdown.sh; echo 'ubuntu' | sudo -S sh 'shutdown.sh'",
-      "skip_compaction": false,
-      "keep_registered": true
+      "skip_compaction": false
     }
   ],
   "provisioners": [
@@ -69,24 +69,22 @@
   "post-processors": [
     {
       "type": "vsphere",
-      "cluster": "cluster",
       "insecure": true,
-      "datacenter": "datacenter1",
+      "host": "{{user `vcenter_host`}}",
+      "datacenter": "{{user `vcenter_datacenter`}}",
+      "cluster": "{{user `vcenter_cluster`}}",
       "datastore": "{{user `esxi_datastore`}}",
-      "host": "vcenter.fibernetcpe",
-      "username": "{{user `esxi_username`}}",
-      "password": "{{user `password`}}",
-      "vm_folder": "/templates",
-      "vm_name": "ubuntu-v23"
+      "username": "{{user `vcenter_user`}}",
+      "password": "{{user `vcenter_password`}}",
+      "vm_name": "ubuntu-{{user `version`}}",
+      "overwrite": true
     },
     {
       "type": "vsphere-template",
-      "host": "vcenter.fibernetcpe",
-      "insecure": true,
-      "username": "{{user `vcenter_username`}}",
-      "password": "{{user `password`}}",
-      "datacenter": "datacenter1",
-      "folder": "/templates"
+      "host": "{{user `vcenter_host`}}",
+      "username": "{{user `vcenter_user`}}",
+      "password": "{{user `vcenter_password`}}",
+      "insecure": true
     }
   ]
 }
