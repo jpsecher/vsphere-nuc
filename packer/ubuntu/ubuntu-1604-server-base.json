@@ -2,7 +2,15 @@
   "description": "Ubuntu Server base image",
   "min_packer_version": "1.2.1",
   "variables": {
-    "version": "v27"
+    "version": "v27",
+    "esxi_host": "esxi.fibernetcpe",
+    "esxi_network": "VM Network",
+    "esxi_datastore": "datastore1",
+    "esxi_user": "root",
+    "vcenter_host": "vcenter.fibernetcpe",
+    "vcenter_datacenter": "datacenter1",
+    "vcenter_cluster": "cluster1",
+    "vcenter_user": "administrator@vsphere.local"
   },
   "builders": [
     {

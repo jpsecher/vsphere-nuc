@@ -1,6 +1,6 @@
 packer/*/packer_cache
-packer/rancher/variables.json
-packer/ubuntu/variables.json
+packer/*/secrets.json
+packer/ubuntu/output-ubuntu-*
 terraform/.terraform
 terraform/secrets.tf
 terraform/terraform.tfstate*

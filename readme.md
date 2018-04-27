@@ -14,19 +14,10 @@ Plan:
 
 ## Initial setup
 
-Get the passwords to your ESXi host and your vCenter adminiatration account. Create a `packer/ubuntu/variables.json`:
+Get the passwords to your ESXi host and your vCenter adminiatration account. Create a `packer/ubuntu/secrets.json`:
 
     {
-      "private_ssh_key_file": "/Users/jps/.ssh/esxi-lundogbendsen_rsa",
-      "esxi_host": "esxi.fibernetcpe",
-      "esxi_network": "VM Network",
-      "esxi_datastore": "datastore1",
-      "esxi_user": "root",
       "esxi_password": "correct battery horse staple",
-      "vcenter_host": "vcenter.fibernetcpe",
-      "vcenter_datacenter": "datacenter1",
-      "vcenter_cluster": "cluster1",
-      "vcenter_user": "administrator@vsphere.local",
       "vcenter_password": "correct battery horse staple",
     }
 
@@ -58,11 +49,11 @@ Installed as: /Applications/VMware\ OVF\ Tool/ovftool
 Validate your packer file
 
     $ cd packer/ubuntu
-    $ packer validate -var-file=variables.json  ubuntu-1604-server-base.json
+    $ packer validate -var-file=secrets.json  ubuntu-1604-server-base.json
 
 Build an image
 
-    $ packer build -var-file=variables.json ubuntu-1604-server-base.json
+    $ packer build -var-file=secrets.json ubuntu-1604-server-base.json
 
 ## Terraform
 

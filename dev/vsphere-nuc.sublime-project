@@ -2,6 +2,7 @@
   [ { "path": ".."
     , "folder_exclude_patterns":
       [ "packer_cache"
+      , "packer/ubuntu/output-ubuntu*"
       ]
     , "file_exclude_patterns":
       [ "terraform.tfstate*"
