@@ -11,6 +11,7 @@ Plan:
 * [ ] Create a cluster that Docker Swarm can run on.
 * [ ] Create a Gluster host for persistent storage.
 * [ ] Get Docker GetStarted example to run on Gluster-backed storage.
+* [ ] Find out the minimal permissions needed by the DevOps user running Packer/Terraform.
 
 ## Initial setup
 
@@ -64,3 +65,5 @@ Build an image
 ### Todo
 
 * Compatibility mode of VM?
+* Do we need the [vSphere CLI](https://github.com/vmware/govmomi/tree/master/govc) (govc) installed?
+
