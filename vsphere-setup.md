@@ -37,7 +37,7 @@ Through the Web GUI (Flash) on vCenter, create `datacenter1` by right-clicking o
 
 ![vCenter resource tree](vcenter-resource-tree.png)
 
-From there on, Terrafom can control the rest.
+From there on, Terrafom can (almost) control the rest. After terraform apply has created the datastore_cluster, manually add the datastores to the datastore_cluster.
 
 The virtual switches and subnets (called _Port Groups_) can be created by Terraform, distributed across all hosts in the cluster so that each host looks the same to the guests.
 

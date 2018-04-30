@@ -3,9 +3,12 @@
     , "folder_exclude_patterns":
       [ "packer_cache"
       , "packer/ubuntu/output-ubuntu*"
+      , "terraform/*/.terraform"
       ]
     , "file_exclude_patterns":
       [ "terraform.tfstate*"
+      , "terraform/*/secrets.tf"
+      , "terraform/*/variables.tf"
       ]
     }
   ]

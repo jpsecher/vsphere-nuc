@@ -1,6 +1,8 @@
 packer/*/packer_cache
 packer/*/secrets.json
 packer/ubuntu/output-ubuntu-*
-terraform/.terraform
 terraform/secrets.tf
-terraform/terraform.tfstate*
+terraform/swarm/.terraform
+terraform/swarm/terraform.tfstate*
+terraform/vsphere/.terraform
+terraform/vsphere/terraform.tfstate*
