@@ -50,7 +50,7 @@ Installed as: /Applications/VMware\ OVF\ Tool/ovftool
 Validate your packer file
 
     $ cd packer/ubuntu
-    $ packer validate -var-file=secrets.json  ubuntu-1604-server-base.json
+    $ packer validate -var-file=secrets.json ubuntu-1604-server-base.json
 
 Build an image
 

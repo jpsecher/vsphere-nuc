@@ -2,7 +2,7 @@
   "description": "Ubuntu Server base image",
   "min_packer_version": "1.2.1",
   "variables": {
-    "version": "v27",
+    "version": "v1",
     "esxi_host": "esxi.fibernetcpe",
     "esxi_network": "VM Network",
     "esxi_datastore": "datastore1",
