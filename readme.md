@@ -19,12 +19,12 @@ Get the passwords to your ESXi host and your vCenter adminiatration account. Cre
 
     {
       "esxi_password": "correct battery horse staple",
-      "vcenter_password": "correct battery horse staple",
+      "vcenter_password": "correct battery horse staple"
     }
 
 Create a `terraform/secrets.tf` with
 
-    variable "vsphere-password" {
+    variable vsphere-password {
       default = "correct battery horse staple"
     }
 
@@ -55,6 +55,8 @@ Validate your packer file
 Build an image
 
     $ packer build -var-file=secrets.json ubuntu-1604-server-base.json
+
+If you are refused SSH access, then check the [the host setup](vsphere-setup.md).
 
 ## Terraform
 

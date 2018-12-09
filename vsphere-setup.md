@@ -2,7 +2,7 @@
 
 ## Enable SSH on ESXi host
 
-To be able to SSH into the host, in the vSphere Client GUI, select the host, then Actions/Services/EnableSSH. (This setting will be reset after a reboot of the ESXi.)
+To be able to SSH into the host, in the vSphere Client GUI, select the host (esxi.fibernetcpe), then Configure/System/Services/SSH and set Edit Startup Policy to Start and stop with host.
 
 Then SSH into the host, and run
 
