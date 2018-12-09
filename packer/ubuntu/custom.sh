@@ -3,5 +3,5 @@
 
 # Install packages
 export DEBIAN_FRONTEND=noninteractive
-PACKAGES="curl"
+PACKAGES="curl open-vm-tools"
 apt-get install -y -q --no-install-recommends ${PACKAGES}

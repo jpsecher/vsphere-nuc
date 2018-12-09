@@ -2,7 +2,7 @@
   "description": "Ubuntu Server base image",
   "min_packer_version": "1.2.4",
   "variables": {
-    "version": "v1",
+    "version": "v5",
     "esxi_host": "esxi.fibernetcpe",
     "esxi_network": "VM Network",
     "esxi_datastore": "datastore1",
@@ -75,7 +75,7 @@
       "type": "shell",
       "execute_command":
         "{{ .Vars }} echo 'ubuntu' | sudo -ES bash '{{.Path}}'",
-      "scripts": ["base.sh", "vmware.sh", "custom.sh", "cleanup.sh"]
+      "scripts": ["base.sh", "custom.sh", "cleanup.sh"]
     }
   ],
   "post-processors": [
@@ -89,7 +89,12 @@
       "username": "{{user `vcenter_user`}}",
       "password": "{{user `vcenter_password`}}",
       "vm_name": "ubuntu-{{user `version`}}",
-      "overwrite": true
+      "overwrite": true,
+      "options": [
+        "--acceptAllEulas",
+        "--disableVerification",
+        "--noSSLVerify"
+      ]
     },
     {
       "type": "vsphere-template",

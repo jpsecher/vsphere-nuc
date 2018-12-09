@@ -6,3 +6,4 @@ terraform/swarm/.terraform
 terraform/swarm/terraform.tfstate*
 terraform/vsphere/.terraform
 terraform/vsphere/terraform.tfstate*
+.terraform/

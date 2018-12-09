@@ -43,14 +43,14 @@ output "datastore-ids" {
   value = ["${data.vsphere_datastore.datastore-1.id}", "${data.vsphere_datastore.datastore-2.id}"]
 }
 
-resource "vsphere_datastore_cluster" "datastore-cluster" {
-  name = "datastore-cluster"
-  datacenter_id = "${data.vsphere_datacenter.dc.id}"
-  sdrs_enabled  = false
-}
-output "datastore-cluster-id" {
-  value = "${vsphere_datastore_cluster.datastore-cluster.id}"
-}
+# resource "vsphere_datastore_cluster" "datastore-cluster" {
+#   name = "datastore-cluster"
+#   datacenter_id = "${data.vsphere_datacenter.dc.id}"
+#   sdrs_enabled  = false
+# }
+# output "datastore-cluster-id" {
+#   value = "${vsphere_datastore_cluster.datastore-cluster.id}"
+# }
 
 data "vsphere_network" "network" {
   name = "${var.vsphere-network}"
@@ -58,4 +58,13 @@ data "vsphere_network" "network" {
 }
 output "network-id" {
   value = "${data.vsphere_network.network.id}"
+}
+
+provider "vsphere" {
+  version = "~> 1.9"
+  user = "${var.vsphere-user}"
+  password = "${var.vsphere-password}"
+  vsphere_server = "${var.vsphere-vcenter}"
+  ## Use self-signed certificate.
+  allow_unverified_ssl = true
 }

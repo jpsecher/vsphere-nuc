@@ -58,6 +58,10 @@ Build an image
 
 If you are refused SSH access, then check the [the host setup](vsphere-setup.md).
 
+More debugging aids:
+
+    $ PACKER_LOG=1 packer build -on-error=ask -debug ...
+
 ## Terraform
 
     $ cd terraform
